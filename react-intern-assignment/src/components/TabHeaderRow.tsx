@@ -1,4 +1,3 @@
-import React from "react";
 import type { FC } from "react";
 import { Link2, RefreshCw, Plus, Sparkles } from "lucide-react";
 

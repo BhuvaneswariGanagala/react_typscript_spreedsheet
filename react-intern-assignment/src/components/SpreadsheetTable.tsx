@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useTable, useSortBy } from "react-table";
-import { type Column } from "react-table";
 import clsx from "clsx";
 import TabHeaderRow from "./TabHeaderRow";
 
