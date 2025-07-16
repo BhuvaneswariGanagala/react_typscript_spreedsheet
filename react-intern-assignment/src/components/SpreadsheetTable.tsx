@@ -5,7 +5,7 @@ import TabHeaderRow from "./TabHeaderRow";
 
 // Define your row data type
 type RowData = {
-  task: string;
+  job: string;
   submitDate: string;
   status: string;
   submitter: string;
@@ -19,7 +19,7 @@ type RowData = {
 // Sample data
 const data: RowData[] = [
   {
-    task: "Launch social media campaign for pre...",
+    job: "Launch social media campaign for pre...",
     submitDate: "15-11-2024",
     status: "In Progress",
     submitter: "Asha Patel",
@@ -30,7 +30,7 @@ const data: RowData[] = [
     value: "8,250.00"
   },
   {
-    task: "Update posts to be company settings",
+    job: "Update posts to be company settings",
     submitDate: "28-10-2024",
     status: "Need to start",
     submitter: "Irfan Khan",
@@ -41,7 +41,7 @@ const data: RowData[] = [
     value: "3,200.00"
   },
   {
-    task: "Finalize user catalog feedback for age...",
+    job: "Finalize user catalog feedback for age...",
     submitDate: "06-10-2024",
     status: "In Progress",
     submitter: "Mark Johnson",
@@ -52,7 +52,7 @@ const data: RowData[] = [
     value: "4,750.00"
   },
   {
-    task: "Design new features for the website",
+    job: "Design new features for the website",
     submitDate: "19-10-2025",
     status: "Complete",
     submitter: "Emily Green",
@@ -63,7 +63,7 @@ const data: RowData[] = [
     value: "6,000.00"
   },
   {
-    task: "Prepare financial report for Q4",
+    job: "Prepare financial report for Q4",
     submitDate: "25-09-2025",
     status: "Blocked",
     submitter: "Jessica Brown",
@@ -74,7 +74,7 @@ const data: RowData[] = [
     value: "2,600.00"
   },
   {
-    task: "Submit...",
+    job: "Submit...",
     submitDate: "01-10-2025",
     status: "In Progress",
     submitter: "Alex Turner",
@@ -86,7 +86,7 @@ const data: RowData[] = [
   },
   // Add 19 empty rows
   ...Array.from({ length: 19 }, () => ({
-    task: "",
+    job: "",
     submitDate: "",
     status: "",
     submitter: "",
@@ -109,8 +109,8 @@ const SpreadsheetTable = () => {
       width: 40
     },
     {
-      Header: "Task Request",
-      accessor: "task",
+      Header: "Job Request",
+      accessor: "job",
       Cell: ({ value }: { value: any }) => (
         <span className="text-sm text-gray-800 truncate max-w-xs block">{value}</span>
       ),
@@ -277,21 +277,21 @@ const SpreadsheetTable = () => {
         </table>
 
       {/* Bottom Tabs */}
-      <div className="flex items-center mt-4 border-b border-gray-200 text-sm font-medium text-gray-500">
+      <div className="flex items-center mt-1 border-b border-gray-200 text-sm font-medium text-gray-500">
         {["All Orders", "Pending", "Reviewed", "Arrived"].map((tab, i) => (
           <button
             key={i}
             className={clsx(
               "px-4 py-2 -mb-px border-b-2",
               i === 0
-                ? "border-green-900 text-green-900 font-semibold"
+                ? "border-green-900 text-green-900 font-semibold  bg-gray-100"
                 : "border-transparent hover:text-gray-700"
             )}
           >
             {tab}
           </button>
         ))}
-        <button className="ml-2 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+        <button className="ml-2 w-8 h-8 fle\x items-center justify-center text-gray-500 hover:text-gray-700">
           <span className="text-lg font-semibold">+</span>
         </button>
       </div>
