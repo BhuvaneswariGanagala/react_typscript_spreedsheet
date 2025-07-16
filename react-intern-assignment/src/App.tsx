@@ -1,10 +1,8 @@
 import Breadcrumbs from "./components/Breadcrumbs";
 import Toolbar from "./components/Toolbar";
-// import TabHeader from "./components/TabHeader";
 import SpreadsheetTable from "./components/SpreadsheetTable"
 import ActionsPanel from "./components/ActionPanel";
 import UserBar from "./components/UserBar";
-import TabHeaderRow from "./components/TabHeaderRow";
 function App() {
   return (
     <div className="min-h-screen bg-gray-50 p-4 font-sans">

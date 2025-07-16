@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { useTable, useSortBy, Column } from "react-table";
+import { useTable, useSortBy } from "react-table";
+import { type Column } from "react-table";
 import clsx from "clsx";
 import TabHeaderRow from "./TabHeaderRow";
 
@@ -101,17 +102,17 @@ const data: RowData[] = [
 const ROW_SCROLL_THRESHOLD = 25;
 
 const SpreadsheetTable = () => {
-  const columns: Column<RowData>[] = useMemo(() => [
+  const columns = useMemo(() => [
     {
       Header: "#",
       id: "rowNumber",
-      Cell: ({ row }) => <span className="text-gray-600">{row.index + 1}</span>,
+      Cell: ({ row }: { row: any }) => <span className="text-gray-600">{row.index + 1}</span>,
       width: 40
     },
     {
       Header: "Task Request",
       accessor: "task",
-      Cell: ({ value }) => (
+      Cell: ({ value }: { value: any }) => (
         <span className="text-sm text-gray-800 truncate max-w-xs block">{value}</span>
       ),
       width: 250
@@ -119,13 +120,13 @@ const SpreadsheetTable = () => {
     {
       Header: "Submit Date",
       accessor: "submitDate",
-      Cell: ({ value }) => <span className="text-sm text-gray-700">{value}</span>,
+      Cell: ({ value }: { value: any }) => <span className="text-sm text-gray-700">{value}</span>,
       width: 100
     },
     {
       Header: "Status",
       accessor: "status",
-      Cell: ({ value }) => {
+      Cell: ({ value }: { value: any }) => {
         const base = "px-2 py-0.5 text-xs rounded-full font-medium whitespace-nowrap";
         const color = clsx({
           "bg-yellow-100 text-yellow-800": value === "In Progress",
@@ -140,7 +141,7 @@ const SpreadsheetTable = () => {
     {
       Header: "Submitter",
       accessor: "submitter",
-      Cell: ({ value }) => (
+      Cell: ({ value }: { value: any }) => (
         <span className="text-sm text-gray-800 whitespace-nowrap">{value}</span>
       ),
       width: 150
@@ -148,7 +149,7 @@ const SpreadsheetTable = () => {
     {
       Header: "URL",
       accessor: "url",
-      Cell: ({ value }) => (
+      Cell: ({ value }: { value: any }) => (
         <span className="text-sm text-black whitespace-nowrap">{value}</span>
       ),
       width: 120
@@ -156,7 +157,7 @@ const SpreadsheetTable = () => {
     {
       Header: "Assigned",
       accessor: "assigned",
-      Cell: ({ value }) => (
+      Cell: ({ value }: { value: any }) => (
         <span className="text-sm text-gray-800 whitespace-nowrap">{value}</span>
       ),
       width: 150
@@ -164,7 +165,7 @@ const SpreadsheetTable = () => {
     {
       Header: "Priority",
       accessor: "priority",
-      Cell: ({ value }) => {
+      Cell: ({ value }: { value: any }) => {
         const color = clsx({
           "bg-red-100 text-red-700": value === "High",
           "bg-yellow-100 text-yellow-800": value === "Medium",
@@ -181,13 +182,13 @@ const SpreadsheetTable = () => {
     {
       Header: "Due Date",
       accessor: "dueDate",
-      Cell: ({ value }) => <span className="text-sm text-gray-700">{value}</span>,
+      Cell: ({ value }: { value: any }) => <span className="text-sm text-gray-700">{value}</span>,
       width: 100
     },
     {
       Header: "Est. Value",
       accessor: "value",
-      Cell: ({ value }) => <span className="text-sm text-gray-700">{value}</span>,
+      Cell: ({ value }: { value: any }) => <span className="text-sm text-gray-700">{value}</span>,
       width: 100
     },
     {
@@ -206,7 +207,7 @@ const SpreadsheetTable = () => {
     headerGroups,
     rows,
     prepareRow
-  } = useTable<RowData>({ columns, data }, useSortBy);
+  } = useTable({ columns, data }, useSortBy);
 
   const needsVertScroll = rows.length > ROW_SCROLL_THRESHOLD;
 
@@ -226,9 +227,9 @@ const SpreadsheetTable = () => {
 
         <table {...getTableProps()} className="min-w-full text-sm text-left">
           <thead className="bg-gray-50 border-b border-gray-200">
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup: any) => (
               <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                {headerGroup.headers.map((column, colIndex, arr) => (
+                {headerGroup.headers.map((column: any, colIndex: any, arr: any) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={column.id}
@@ -249,11 +250,11 @@ const SpreadsheetTable = () => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()} key={row.id} className="border-b border-gray-300 hover:bg-gray-50">
-                  {row.cells.map((cell, cellIndex, arr) => (
+                  {row.cells.map((cell: any, cellIndex: any, arr: any) => (
                     <td
                       key={cell.column.id}
                       {...cell.getCellProps()}

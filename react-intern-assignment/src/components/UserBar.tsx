@@ -1,4 +1,5 @@
-import { FC } from "react";
+import React from "react";
+import type { FC } from "react";
 import { Bell, Search } from "lucide-react";
 
 const UserBar: FC = () => {
