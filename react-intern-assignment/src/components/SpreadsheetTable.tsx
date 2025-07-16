@@ -149,7 +149,7 @@ const SpreadsheetTable = () => {
       Header: "URL",
       accessor: "url",
       Cell: ({ value }: { value: any }) => (
-        <span className="text-sm text-black whitespace-nowrap">{value}</span>
+        <span className="text-sm text-black whitespace-nowrap underline">{value}</span>
       ),
       width: 120
     },
